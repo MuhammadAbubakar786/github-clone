@@ -1,35 +1,37 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./Trending.css";
+import Header from '../Header';
+import { useLocation } from 'react-router-dom';
+import Repositories from "../Repositories/Repositories";
+import axios from "axios";
+import githubTrends from 'github-trends-api';
 
 const Trending = () => {
+  const [trendingRepos, setTrendingRepos] = useState([])
+  const headers = {
+    headers: {
+
+    },
+    withCredentials: 'false',
+  };
+  useEffect(() => {
+    axios.get(`http://gh-trending-api.herokuapp.com/repositories`, {
+      headers: {
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).then((res) => {
+      console.log("res", res);
+      if (res.status === 200)
+        setTrendingRepos(res.data)
+    }).catch((error) => {
+      console.log("error", error);
+    })
+  }, [])
   return (
     <>
-      <Container fluid className="trendingBanner px-0 border-bottom">
-        <Container>
-          <h1>Trending</h1>
-          <p>These are the developers building the hot tools today.</p>
-        </Container>
-      </Container>
-      <Container fluid className="trendingResults">
-        <Container className="innerContainer px-0">
-        <div className="box-header d-lg-flex p-3">
-          <div className="tabBtns d-lg-flex">
-          <Link to="#">Developers</Link>
-          <Link to="#">Repositories</Link>
-          </div>
-          <div className="filterOptions d-lg-flex">
-          <Link to="#">Spoken Language: Any</Link>
-          <Link to="#">Language: Any</Link>
-          <Link to="#">Date Range: Today</Link>
-          </div>
-        </div>
-        <div className="filterResults">
-
-        </div>
-        </Container>
-      </Container>
+      <Header />
+      <Repositories />
     </>
   );
 };

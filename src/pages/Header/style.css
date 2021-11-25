@@ -1,0 +1,15 @@
+.trendingBanner,
+.trendingResults {
+  padding-block: 40px;
+}
+.trendingBanner h1,
+.trendingBanner p {
+  color: #fff;
+}
+.innerContainer {
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+.box-header {
+  background: #161b22;
+}
