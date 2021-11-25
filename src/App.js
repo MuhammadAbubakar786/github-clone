@@ -1,10 +1,11 @@
 import './App.css';
-import TrendingRepo from './pages/TrendingRepo';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Trending from './pages/Trending/Trending'
 
 function App() {
   return (
     <div className="App">
-              <TrendingRepo />
+            <Trending />
     </div>
   );
 }
