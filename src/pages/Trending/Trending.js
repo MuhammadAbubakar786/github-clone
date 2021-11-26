@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Trending.css";
 
 const Trending = () => {
@@ -14,13 +15,14 @@ const Trending = () => {
       <Container fluid className="trendingResults">
         <Container className="innerContainer px-0">
         <div className="box-header d-lg-flex p-3">
-          <div className="tabBtns">
-          <h4>Repositories</h4>
-          <h4>Developers</h4>
+          <div className="tabBtns d-lg-flex">
+          <Link to="#">Developers</Link>
+          <Link to="#">Repositories</Link>
           </div>
-          <div className="filterOptions">
-          <h4>Repositories</h4>
-          <h4>Repositories</h4>
+          <div className="filterOptions d-lg-flex">
+          <Link to="#">Spoken Language: Any</Link>
+          <Link to="#">Language: Any</Link>
+          <Link to="#">Date Range: Today</Link>
           </div>
         </div>
         <div className="filterResults">
